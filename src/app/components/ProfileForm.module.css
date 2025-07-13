@@ -1,0 +1,89 @@
+.container {
+  max-width: 480px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--color-background-card);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.loading {
+  text-align: center;
+  margin-top: 2rem;
+  color: var(--color-text);
+}
+
+.heading {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.avatarPreview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.avatarImage {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--color-control-border);
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.input {
+  padding: 0.75rem;
+  border: var(--border-width) solid var(--color-control-border);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+.error {
+  color: var(--color-error);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.button {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  background-color: var(--brand-color, var(--color-info));
+  color: var(--button-text-color, var(--color-info-text));
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.button:hover:not(:disabled) {
+  background-color: var(--color-info-hover);
+}

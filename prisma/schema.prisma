@@ -1,0 +1,48 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String   @id @default(uuid())
+  name        String?    // 用于 OAuth 或 profile 页展示
+  email       String? @unique
+  password    String?    // 存储 hash 后的密码
+  login       String? @unique
+  image       String?    // GitHub / Google 登录头像
+  avatarUrl   String?    // 用户自定义头像
+  bio         String?
+  skills      String[]
+  posts       Post[]
+  followers   Follower[] @relation("followers")
+  following   Follower[] @relation("following")
+  createdAt   DateTime @default(now())
+}
+
+model Post {
+  id          String   @id @default(uuid())
+  author      User     @relation(fields: [authorId], references: [id])
+  authorId    String
+  title       String
+  content     String
+  coverImage  String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Follower {
+  id         String  @id @default(uuid())
+  follower   User    @relation("following", fields: [followerId], references: [id])
+  followerId String
+  following  User    @relation("followers", fields: [followingId], references: [id])
+  followingId String
+  createdAt  DateTime @default(now())
+
+  @@unique([followerId, followingId])
+}
